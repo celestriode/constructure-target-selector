@@ -1,0 +1,27 @@
+{
+    "name": "celestriode/target-selector-constructure",
+    "description": "Constructure implementation for target selector structures.",
+    "authors": [
+        {
+            "name": "Celestriode",
+            "homepage": "https://github.com/celestriode"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Celestriode\\TargetSelectorConstructure\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.3|^8.0",
+        "ext-mbstring": "*",
+        "celestriode/captain": "v0.0.10-beta",
+        "celestriode/constructure": "^0.6.5",
+        "celestriode/mattock": "v0.0.11-beta",
+        "celestriode/dynamic-minecraft-registries": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
