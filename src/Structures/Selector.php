@@ -41,12 +41,22 @@ class Selector extends AbstractStructure
     {
         $this->accepted = $accepted;
 
+        parent::__construct();
+    }
+
+    /**
+     * Creates a placeholder parameter as a hack to allow the various value-creating static methods in this class.
+     *
+     * @return Parameter
+     */
+    final protected static function getParameterPlaceholder(): Parameter
+    {
         if (self::$parameterPlaceholder === null) {
 
-            self::$parameterPlaceholder = new Parameter(null);
+            return self::$parameterPlaceholder = new Parameter(null);
         }
 
-        parent::__construct();
+        return self::$parameterPlaceholder;
     }
 
     /**
@@ -171,7 +181,7 @@ class Selector extends AbstractStructure
      */
     public static function string(string $input = null): StringValue
     {
-        return new StringValue(self::$parameterPlaceholder, $input);
+        return new StringValue(self::getParameterPlaceholder(), $input);
     }
 
     /**
@@ -182,7 +192,7 @@ class Selector extends AbstractStructure
      */
     public static function snbt(CompoundTag $nbt = null): NbtValue
     {
-        return new NbtValue(self::$parameterPlaceholder, $nbt);
+        return new NbtValue(self::getParameterPlaceholder(), $nbt);
     }
 
     /**
@@ -193,7 +203,7 @@ class Selector extends AbstractStructure
      */
     public static function mixed(AbstractValue ...$types): MixedValue
     {
-        return new MixedValue(self::$parameterPlaceholder, ...$types);
+        return new MixedValue(self::getParameterPlaceholder(), ...$types);
     }
 
     /**
@@ -204,6 +214,6 @@ class Selector extends AbstractStructure
      */
     public static function nested(ParametersContainer $parameters = null): ParametersValue
     {
-        return new ParametersValue(self::$parameterPlaceholder, $parameters ?? new ParametersContainer());
+        return new ParametersValue(self::getParameterPlaceholder(), $parameters ?? new ParametersContainer());
     }
 }
