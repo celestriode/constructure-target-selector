@@ -31,6 +31,11 @@ class NbtValue extends AbstractValue
      */
     public function toString(PrettifierInterface $prettifier = null): string
     {
+        if ($this->getNbtValue() === null) {
+
+            return '';
+        }
+
         return $this->getNbtValue()->toString();
     }
 }
