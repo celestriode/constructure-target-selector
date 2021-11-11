@@ -30,6 +30,6 @@ class StringValue extends AbstractValue
      */
     public function toString(PrettifierInterface $prettifier = null): string
     {
-        return $this->getStringValue();
+        return $this->getStringValue() ?? '';
     }
 }
