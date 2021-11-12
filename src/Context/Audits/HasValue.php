@@ -107,7 +107,7 @@ class HasValue extends AbstractAudit
             return $input->getKey();
         } else if ($input instanceof StringValue) {
 
-            return $input->getStringValue();
+            return $input->getStringValue() ?? '';
         }
 
         throw new InvalidArgumentException('Invalid input');

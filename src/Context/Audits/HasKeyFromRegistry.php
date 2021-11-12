@@ -19,7 +19,7 @@ class HasKeyFromRegistry extends HasValueFromRegistry
     {
         if ($input instanceof Parameter || $input instanceof AbstractValue) {
 
-            return $input->getKey();
+            return $input->getKey() ?? '';
         }
 
         throw new InvalidArgumentException('Invalid input');

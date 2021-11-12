@@ -26,7 +26,7 @@ class HasKeyFromResourceRegistry extends HasValueFromResourceRegistry
         }
 
         try {
-            $rl = ResourceLocation::read(new StringReader($input->getKey()), $this->checkForTag());
+            $rl = ResourceLocation::read(new StringReader($input->getKey() ?? ''), $this->checkForTag());
 
             return $rl->toString($this->checkForTag());
         } catch (CommandSyntaxException $e) {

@@ -38,6 +38,11 @@ class UuidSelector extends AbstractTargetSelector
      */
     public function toString(PrettifierInterface $prettifier = null): string
     {
+        if ($this->getUuid() === null) {
+
+            return '';
+        }
+
         return $this->getUuid()->toString();
     }
 }

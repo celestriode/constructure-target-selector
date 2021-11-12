@@ -29,7 +29,7 @@ class Boolean extends AbstractValueAudit
             return false;
         }
 
-        $value = $input->getStringValue();
+        $value = $input->getStringValue() ?? '';
 
         // Check if the value is correct.
 

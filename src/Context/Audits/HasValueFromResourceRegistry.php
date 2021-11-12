@@ -98,7 +98,7 @@ class HasValueFromResourceRegistry extends HasValueFromRegistry
      */
     public function matches(string $input): bool
     {
-        if ($this->checkForTag() && $input[0] == ResourceLocation::TAG_TOKEN) {
+        if ($this->checkForTag() && $this->getTagRegistry() !== null && && $input[0] == ResourceLocation::TAG_TOKEN) {
 
             return $this->getTagRegistry()->has(mb_substr($input, 1));
         }
@@ -124,7 +124,7 @@ class HasValueFromResourceRegistry extends HasValueFromRegistry
 
         if ($tag !== null) {
 
-            return $buffer . ',tag_registry=' . $this->getTagRegistry()->getName() . ',tag_lenient=' . ($this->isTagLenient() ? 'true' : 'false') . '}';
+            return $buffer . ',tag_registry=' . $tag->getName() . ',tag_lenient=' . ($this->isTagLenient() ? 'true' : 'false') . '}';
         }
 
         return $buffer . '}';

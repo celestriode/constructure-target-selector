@@ -23,12 +23,12 @@ class StringLength extends NumericRange
     {
         if ($input instanceof StringValue) {
 
-            return $this->inRange($constructure, $input->getStringValue(), $input, $expected);
+            return $this->inRange($constructure, $input->getStringValue() ?? '', $input, $expected);
         }
 
         if ($input instanceof PlayerSelector) {
 
-            return $this->inRange($constructure, $input->getPlayerName(), $input, $expected);
+            return $this->inRange($constructure, $input->getPlayerName() ?? '', $input, $expected);
         }
 
         $constructure->getEventHandler()->trigger(self::INCOMPATIBLE, $this, $input, $expected);

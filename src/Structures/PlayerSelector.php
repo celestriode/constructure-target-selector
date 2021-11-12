@@ -37,6 +37,6 @@ class PlayerSelector extends AbstractTargetSelector
      */
     public function toString(PrettifierInterface $prettifier = null): string
     {
-        return $this->getPlayerName();
+        return $this->getPlayerName() ?? '';
     }
 }

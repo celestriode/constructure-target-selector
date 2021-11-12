@@ -37,7 +37,7 @@ class NumericRange extends Numeric
             return false;
         }
 
-        $num = $input->getStringValue();
+        $num = $input->getStringValue() ?? '';
 
         try {
 
