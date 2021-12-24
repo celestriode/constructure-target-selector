@@ -4,6 +4,7 @@ use Celestriode\Captain\Exceptions\CommandSyntaxException;
 use Celestriode\Constructure\AbstractConstructure;
 use Celestriode\Constructure\Context\AuditInterface;
 use Celestriode\Constructure\Context\Events\EventHandlerInterface;
+use Celestriode\Constructure\Exceptions\ConversionFailureException;
 use Celestriode\Constructure\Structures\StructureInterface;
 use Celestriode\DynamicRegistry\Exception\InvalidValue;
 use Celestriode\TargetSelectorConstructure\Exceptions\ConversionFailure;
@@ -44,13 +45,13 @@ class TargetSelectorConstructure extends AbstractConstructure
     /**
      * Converts a string into a target selector structure fit for Constructure comparison.
      *
-     * @throws ConversionFailure
+     * @throws ConversionFailureException
      */
     public function toStructure($input): StructureInterface
     {
         if (!is_string($input)) {
 
-            throw new ConversionFailure("Raw input must be a string.");
+            throw new ConversionFailureException("Raw input must be a string.");
         }
 
         try {
@@ -60,7 +61,7 @@ class TargetSelectorConstructure extends AbstractConstructure
             return new Selector($this->getParser()->parse($input));
         } catch (ConversionFailure|CommandSyntaxException|InvalidValue $e) {
 
-            throw new ConversionFailure('Conversion failed: ' . $e->getMessage());
+            throw new ConversionFailureException('Conversion failed: ' . $e->getMessage());
         }
     }
 }
