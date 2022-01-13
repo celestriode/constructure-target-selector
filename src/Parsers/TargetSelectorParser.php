@@ -266,7 +266,7 @@ class TargetSelectorParser
 
             if ($reader->peek() != $parser->separator && $reader->peek() != $closingDelimiter) {
 
-                throw new ConversionFailure('Parameters did not end correctly');
+                throw new ConversionFailure('Unexpected character at position ' . $reader->getCursor() + 1 . ': ' . $reader->peek());
             }
 
             // Skip trailing comma, should it exist. Closing delimiter handled by the while loop.

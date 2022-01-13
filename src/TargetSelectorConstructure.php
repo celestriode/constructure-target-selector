@@ -61,7 +61,7 @@ class TargetSelectorConstructure extends AbstractConstructure
             return new Selector($this->getParser()->parse($input));
         } catch (ConversionFailure|CommandSyntaxException|InvalidValue $e) {
 
-            throw new ConversionFailureException('Conversion failed: ' . $e->getMessage());
+            throw new ConversionFailureException('Target selector parsing failed: ' . $e->getMessage());
         }
     }
 }
