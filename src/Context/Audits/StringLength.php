@@ -51,7 +51,7 @@ class StringLength extends NumericRange
 
         if (!$this->getBounds()->within((float)$len, $this->isInclusive())) {
 
-            $constructure->getEventHandler()->trigger(self::OUT_OF_RANGE, $this, $input, $expected);
+            $constructure->getEventHandler()->trigger(self::OUT_OF_RANGE, $len, $this, $input, $expected);
 
             return false;
         }
